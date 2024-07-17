@@ -1,0 +1,29 @@
+﻿using Microsoft.EntityFrameworkCore;
+using OrderManagmentSystem.Core.Entites;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace OrderMangmentSystem.Repositry.Data
+{
+	public class StoreContext:DbContext
+	{
+		public StoreContext(DbContextOptions<StoreContext> options) : base(options)
+		{
+
+		}
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
+		{
+			modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+		}
+        public DbSet<Customer> Customers { get; set; }
+		public DbSet<Order> Orders { get; set; }
+		public DbSet<OrderItem > OrderItems { get; set; }
+		public DbSet<Product> Products { get; set; }
+		public DbSet<Invoice > Invoices { get; set; }
+
+	}
+}
