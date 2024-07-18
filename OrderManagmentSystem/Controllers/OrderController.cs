@@ -99,7 +99,11 @@ namespace OrderManagmentSystem.Controllers
 			};
 			await _emailService.SendEmailAsync(emailMessage);
 		}
-	}
+        public OrderController()
+        {
+            
+        }
+    }
 
 }
 
