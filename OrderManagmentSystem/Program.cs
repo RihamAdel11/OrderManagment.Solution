@@ -44,7 +44,7 @@ namespace OrderManagmentSystem
 			});
 			builder.Services.AddScoped(typeof(IGenericRepositry<>), typeof(GenericRepositry<>));
 			builder.Services.AddAutoMapper(typeof(MappingProfile));
-			builder.Services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<AppIdentityDbContext>();
+			builder.Services.AddIdentity<User, ApplicationRole>().AddEntityFrameworkStores<AppIdentityDbContext>();
 			builder.Services.AddAuthentication(options =>
 			{
 				options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -68,9 +68,7 @@ namespace OrderManagmentSystem
 			builder.Services.AddScoped<IOrderServices, OrderServices>();
 			builder.Services.AddScoped<IAuthServices, AuthServices>();
 			builder.Services.AddScoped<IPaymentServices, PaymentServices>();
-			builder.Services.AddIdentity<User, ApplicationRole>()
-		.AddEntityFrameworkStores<AppIdentityDbContext >()
-		.AddDefaultTokenProviders();
+		
 
 			builder.Services.AddAuthorization(options =>
 			{

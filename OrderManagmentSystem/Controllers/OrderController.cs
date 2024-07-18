@@ -87,7 +87,7 @@ namespace OrderManagmentSystem.Controllers
 			await SendOrderStatusUpdateNotification(order, newStatus);
 			return NoContent();
 		}
-		public async Task SendOrderStatusUpdateNotification(Order order, OrderStatus newStatus)
+		private async Task SendOrderStatusUpdateNotification(Order order, OrderStatus newStatus)
 		{
 			var customer = await _orderServices .GetCustomerAsync(order.CustomerId);
 			var emailMessage = new MailMessage
